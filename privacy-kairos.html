@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidad de KAIRÓS | NOVARIX</title>
+  <meta name="description" content="Consulta cómo KAIRÓS utiliza, almacena y protege la información de sus usuarios.">
+  <meta name="theme-color" content="#05070d">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="NOVARIX — Inicio">
+        <img src="assets/logo_novarix.png" alt="NOVARIX" class="brand-logo" data-logo-fallback>
+        <span class="brand-logo-fallback">NOVARIX</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+        </ul>
+      </nav>
+
+      <a href="index.html" class="btn btn-outline header-cta">Volver al inicio</a>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="policy-hero">
+      <div class="container">
+        <p class="hero-eyebrow reveal">Documento legal</p>
+        <h1 class="policy-title reveal">Política de Privacidad de KAIRÓS</h1>
+        <p class="policy-subtitle reveal">Desarrollado por NOVARIX</p>
+        <p class="policy-date reveal">Última actualización: agosto de 2026</p>
+      </div>
+    </section>
+
+    <section class="section policy-section">
+      <div class="container policy-content">
+        <p class="policy-intro reveal">
+          En NOVARIX respetamos tu privacidad. Esta Política de Privacidad describe cómo funciona
+          KAIRÓS, qué información utiliza, qué datos se almacenan en tu dispositivo y qué servicios
+          de terceros intervienen. Queremos ser claros y transparentes sobre el funcionamiento
+          actual de la aplicación.
+        </p>
+
+        <!-- 1. Introducción -->
+        <div class="policy-block reveal">
+          <h2>1. Introducción</h2>
+          <p>
+            KAIRÓS es una aplicación de recordatorios para Android desarrollada por NOVARIX.
+            Está pensada para ayudar con la organización personal mediante recordatorios,
+            categorías, repetición y notificaciones locales.
+          </p>
+          <p>
+            Esta política se aplica a la versión actual de KAIRÓS. Si en el futuro se incorporan
+            nuevas funciones o servicios, actualizaremos este documento conforme corresponda.
+          </p>
+        </div>
+
+        <!-- 2. Información que utiliza KAIRÓS -->
+        <div class="policy-block reveal">
+          <h2>2. Información que utiliza KAIRÓS</h2>
+          <p>KAIRÓS maneja dos tipos de información:</p>
+          <ul>
+            <li>
+              <strong>Información de autenticación</strong>, relacionada con la cuenta de Google
+              que usás para iniciar sesión.
+            </li>
+            <li>
+              <strong>Datos funcionales</strong>, como recordatorios, categorías, notas y
+              preferencias, que permanecen principalmente en tu dispositivo.
+            </li>
+          </ul>
+        </div>
+
+        <!-- 3. Autenticación con Google -->
+        <div class="policy-block reveal">
+          <h2>3. Autenticación con Google</h2>
+          <p>
+            KAIRÓS utiliza <strong>Google Sign-In</strong> y <strong>Firebase Authentication</strong>
+            para permitirte seleccionar y autenticar tu cuenta, y para mantener tu sesión activa.
+          </p>
+          <p>La información relacionada con la autenticación puede incluir:</p>
+          <ul>
+            <li>Nombre de Google</li>
+            <li>Correo electrónico</li>
+            <li>URL de la foto de perfil</li>
+            <li>Identificador de usuario de Firebase</li>
+            <li>Tokens de autenticación gestionados por Google/Firebase</li>
+          </ul>
+          <p>
+            KAIRÓS <strong>no recibe ni almacena tu contraseña de Google</strong>.
+            La autenticación se realiza a través de los servicios de Google y Firebase.
+          </p>
+        </div>
+
+        <!-- 4. Datos almacenados localmente -->
+        <div class="policy-block reveal">
+          <h2>4. Datos almacenados localmente</h2>
+          <p>
+            La mayoría de los datos funcionales de KAIRÓS permanecen localmente en tu dispositivo.
+            Se almacenan mediante Hive u otros mecanismos locales.
+          </p>
+          <p>Los datos que se guardan localmente pueden incluir:</p>
+          <ul>
+            <li>Recordatorios</li>
+            <li>Títulos</li>
+            <li>Notas</li>
+            <li>Fechas</li>
+            <li>Horarios</li>
+            <li>Repetición</li>
+            <li>Categorías</li>
+            <li>Checklist</li>
+            <li>Prioridad</li>
+            <li>Plantillas</li>
+            <li>Estado completado</li>
+            <li>Ubicación introducida manualmente</li>
+            <li>Rutas locales de adjuntos</li>
+            <li>Perfil local</li>
+            <li>Foto personalizada local</li>
+            <li>Estado Premium de prueba actual</li>
+          </ul>
+          <p>
+            Actualmente, los recordatorios y los datos de productividad <strong>no</strong> se
+            almacenan en Firestore, Realtime Database, Firebase Storage ni en un backend propio.
+          </p>
+          <p>
+            <strong>No existe sincronización automática entre dispositivos.</strong>
+          </p>
+        </div>
+
+        <!-- 5. Ubicaciones -->
+        <div class="policy-block reveal">
+          <h2>5. Ubicaciones</h2>
+          <p>KAIRÓS <strong>no</strong>:</p>
+          <ul>
+            <li>Obtiene tu ubicación GPS actual</li>
+            <li>Solicita permisos de ubicación</li>
+            <li>Utiliza tu ubicación en segundo plano</li>
+            <li>Utiliza geofencing</li>
+          </ul>
+          <p>
+            Podés introducir manualmente una <strong>dirección</strong> o un
+            <strong>nombre de lugar</strong> en tus recordatorios. También pueden existir campos de
+            latitud y longitud en datos antiguos, pero KAIRÓS no obtiene actualmente esas
+            coordenadas mediante GPS.
+          </p>
+          <p>
+            Cuando pulsás para abrir una ubicación, KAIRÓS puede abrir Google Maps mediante una URL
+            externa. Esa acción se realiza únicamente cuando vos decidís abrirla.
+          </p>
+        </div>
+
+        <!-- 6. Notificaciones -->
+        <div class="policy-block reveal">
+          <h2>6. Notificaciones</h2>
+          <p>Las notificaciones de KAIRÓS son <strong>locales</strong>.</p>
+          <p>Para ello se utilizan:</p>
+          <ul>
+            <li><code>flutter_local_notifications</code></li>
+            <li>Programación local del dispositivo</li>
+            <li>Zona horaria local</li>
+            <li>Alarmas y receptores de Android necesarios</li>
+          </ul>
+          <p>KAIRÓS <strong>no</strong> utiliza:</p>
+          <ul>
+            <li>Firebase Cloud Messaging</li>
+            <li>Servidores push</li>
+            <li>Backend de notificaciones</li>
+          </ul>
+        </div>
+
+        <!-- 7. Servicios de terceros -->
+        <div class="policy-block reveal">
+          <h2>7. Servicios de terceros</h2>
+          <p>Los servicios externos utilizados actualmente por KAIRÓS son:</p>
+          <ol>
+            <li>Google Sign-In</li>
+            <li>Firebase Authentication</li>
+            <li>Servidores de Google para la imagen de perfil asociada a la cuenta de Google</li>
+            <li>Google Maps, únicamente cuando decidís abrir una ubicación externamente</li>
+            <li>
+              La aplicación o proveedor de correo de tu dispositivo para soporte, cuando decidís
+              enviar un correo
+            </li>
+          </ol>
+          <p>
+            Los selectores como <code>image_picker</code> y <code>file_picker</code> funcionan de
+            forma local en tu dispositivo y no implican un backend propio.
+          </p>
+        </div>
+
+        <!-- 8. Fotografías y archivos adjuntos -->
+        <div class="policy-block reveal">
+          <h2>8. Fotografías y archivos adjuntos</h2>
+          <p>
+            Los archivos adjuntos <strong>no se suben a Firebase</strong> y
+            <strong>no se copian a un backend</strong>. KAIRÓS conserva únicamente referencias
+            o rutas locales para usarlos dentro del recordatorio.
+          </p>
+          <p>
+            La foto personalizada del perfil <strong>se guarda localmente en el dispositivo</strong>
+            y no se sube a Firebase Storage.
+          </p>
+        </div>
+
+        <!-- 9. Inteligencia artificial -->
+        <div class="policy-block reveal">
+          <h2>9. Inteligencia artificial</h2>
+          <p>
+            KAIRÓS incluye una interfaz llamada <strong>KairosIaView</strong> o
+            “Secretaria IA de Kairos”.
+          </p>
+          <p>Actualmente esta interfaz:</p>
+          <ul>
+            <li>Es una interfaz o prototipo</li>
+            <li>No hace llamadas HTTP a proveedores de IA</li>
+            <li>No tiene una API configurada</li>
+            <li>No envía recordatorios, notas, perfil ni datos a modelos de IA</li>
+          </ul>
+          <p>
+            Por lo tanto, actualmente <strong>no existe transmisión de datos a servicios de
+            inteligencia artificial</strong>.
+          </p>
+        </div>
+
+        <!-- 10. Publicidad, análisis y pagos -->
+        <div class="policy-block reveal">
+          <h2>10. Publicidad, análisis y pagos</h2>
+          <p>Actualmente KAIRÓS <strong>no</strong> utiliza:</p>
+          <ul>
+            <li>Publicidad</li>
+            <li>AdMob</li>
+            <li>Firebase Analytics</li>
+            <li>Crashlytics</li>
+            <li>SDKs de marketing</li>
+            <li>Google Play Billing activo</li>
+            <li>Procesamiento de pagos activo</li>
+          </ul>
+          <p>
+            Existe una interfaz Premium y un estado local de prueba, pero los pagos reales aún no
+            están habilitados. La versión actual de KAIRÓS no procesa pagos dentro de la aplicación.
+          </p>
+        </div>
+
+        <!-- 11. Conservación y eliminación de datos -->
+        <div class="policy-block reveal">
+          <h2>11. Conservación y eliminación de datos</h2>
+          <p>El usuario inicia sesión mediante Google y KAIRÓS permite cerrar sesión.</p>
+          <p>Actualmente:</p>
+          <ul>
+            <li>
+              Cerrar sesión <strong>no</strong> elimina automáticamente todos los recordatorios,
+              categorías o plantillas locales.
+            </li>
+            <li>
+              <strong>No</strong> existe una función general de “eliminar todos mis datos”.
+            </li>
+            <li><strong>No</strong> existe una exportación general de datos.</li>
+            <li>
+              <strong>No</strong> existe actualmente una eliminación completa de la cuenta de
+              Firebase desde la aplicación.
+            </li>
+          </ul>
+          <p>
+            El usuario sí puede eliminar determinados elementos individuales mediante las funciones
+            existentes de la app, por ejemplo recordatorios, categorías y plantillas, cuando
+            corresponda.
+          </p>
+          <p>
+            Importante: <strong>cerrar sesión no es lo mismo que eliminar una cuenta</strong>.
+          </p>
+        </div>
+
+        <!-- 12. Seguridad -->
+        <div class="policy-block reveal">
+          <h2>12. Seguridad</h2>
+          <p>
+            Aplicamos medidas razonables para proteger la información que maneja KAIRÓS. La mayoría
+            de los datos funcionales se almacenan localmente en tu dispositivo, y la autenticación
+            se apoya en los mecanismos de seguridad de Google y Firebase.
+          </p>
+          <p>
+            Ningún sistema es completamente seguro, por lo que no podemos garantizar una seguridad
+            absoluta. Aun así, trabajamos para mantener un uso responsable de la información.
+          </p>
+        </div>
+
+        <!-- 13. Privacidad de menores -->
+        <div class="policy-block reveal">
+          <h2>13. Privacidad de menores</h2>
+          <p>
+            KAIRÓS <strong>no está diseñada específicamente para menores de edad</strong>.
+          </p>
+        </div>
+
+        <!-- 14. Cambios en esta política -->
+        <div class="policy-block reveal">
+          <h2>14. Cambios en esta política</h2>
+          <p>
+            Esta Política de Privacidad puede actualizarse en el futuro para reflejar cambios en
+            la aplicación o en la legislación aplicable. La fecha de “Última actualización” al
+            inicio de esta página indicará cuándo se realizaron modificaciones.
+          </p>
+        </div>
+
+        <!-- 15. Contacto -->
+        <div class="policy-block reveal">
+          <h2>15. Contacto</h2>
+          <p>
+            Si tienes preguntas sobre esta Política de Privacidad o sobre el tratamiento de datos
+            en KAIRÓS, puedes comunicarte con NOVARIX a través de:
+          </p>
+          <p>
+            <a class="contact-email" href="mailto:soportenovarix@gmail.com">soportenovarix@gmail.com</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="brand" aria-label="NOVARIX — Inicio">
+          <img src="assets/logo_novarix.png" alt="NOVARIX" class="brand-logo brand-logo-footer" data-logo-fallback>
+          <span class="brand-logo-fallback">NOVARIX</span>
+        </a>
+        <p class="footer-slogan">“La solución está al alcance de un click.”</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="Enlaces del pie de página">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="privacy-kairos.html">Política de Privacidad de KAIRÓS</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© 2026 NOVARIX. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
