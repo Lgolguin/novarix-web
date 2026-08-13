@@ -3,7 +3,7 @@
 
   // ==========================================================================
   // 1. Logo fallback
-  //    Si assets/logo_novarix.png no existe o falla al cargar, ocultamos la
+  //    Si logo_novarix.png no existe o falla al cargar, ocultamos la
   //    <img> y mostramos el texto "NOVARIX". Así la página nunca se rompe.
   // ==========================================================================
   function showFallback(img) {
