@@ -214,11 +214,396 @@
   }
 
   // ==========================================================================
+  // Carrusel de productos (admite 1 o varias imágenes + swipe en móvil)
+  // ==========================================================================
+  function initProductCarousels() {
+    var carousels = document.querySelectorAll('[data-carousel]');
+    carousels.forEach(function (root) {
+      var track = root.querySelector('[data-carousel-track]');
+      var slides = track ? Array.prototype.slice.call(track.children) : [];
+      var prev = root.querySelector('[data-carousel-prev]');
+      var next = root.querySelector('[data-carousel-next]');
+      var dotsWrap = root.querySelector('[data-carousel-dots]');
+      var viewport = root.querySelector('.carousel-viewport');
+      if (!track || !slides.length) return;
+
+      var index = 0;
+
+      function render() {
+        track.style.transform = 'translateX(' + (-index * 100) + '%)';
+        slides.forEach(function (slide, i) {
+          slide.classList.toggle('is-active', i === index);
+        });
+        if (dotsWrap) {
+          Array.prototype.forEach.call(dotsWrap.children, function (dot, i) {
+            dot.classList.toggle('is-active', i === index);
+            dot.setAttribute('aria-selected', i === index ? 'true' : 'false');
+          });
+        }
+      }
+
+      function goTo(nextIndex) {
+        index = (nextIndex + slides.length) % slides.length;
+        render();
+      }
+
+      if (dotsWrap && slides.length > 1) {
+        slides.forEach(function (_, i) {
+          var dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'carousel-dot';
+          dot.setAttribute('aria-label', 'Ir a la imagen ' + (i + 1));
+          dot.addEventListener('click', function () { goTo(i); });
+          dotsWrap.appendChild(dot);
+        });
+      }
+
+      if (slides.length > 1) {
+        if (prev) {
+          prev.hidden = false;
+          prev.addEventListener('click', function () { goTo(index - 1); });
+        }
+        if (next) {
+          next.hidden = false;
+          next.addEventListener('click', function () { goTo(index + 1); });
+        }
+      } else {
+        if (prev) prev.hidden = true;
+        if (next) next.hidden = true;
+      }
+
+      if (viewport && slides.length > 1) {
+        var startX = 0;
+        viewport.addEventListener('touchstart', function (event) {
+          startX = event.touches[0].clientX;
+        }, { passive: true });
+        viewport.addEventListener('touchend', function (event) {
+          var deltaX = event.changedTouches[0].clientX - startX;
+          if (Math.abs(deltaX) > 40) {
+            goTo(deltaX < 0 ? index + 1 : index - 1);
+          }
+        }, { passive: true });
+      }
+
+      render();
+    });
+  }
+
+  // ==========================================================================
+  // Modal de demo (lightbox). Si hay video lo reproduce; si no, muestra aviso.
+  // ==========================================================================
+  function createDemoModal() {
+    var root = document.createElement('div');
+    root.className = 'demo-modal';
+    root.setAttribute('role', 'dialog');
+    root.setAttribute('aria-modal', 'true');
+    root.setAttribute('aria-labelledby', 'demo-modal-title');
+    root.setAttribute('aria-hidden', 'true');
+    root.innerHTML =
+      '<div class="demo-modal-backdrop" data-demo-close></div>' +
+      '<div class="demo-modal-dialog">' +
+        '<div class="demo-modal-head">' +
+          '<span class="demo-modal-chip">NOVARIX · DEMO</span>' +
+          '<button type="button" class="demo-modal-close" data-demo-close aria-label="Cerrar">&times;</button>' +
+        '</div>' +
+        '<h2 class="demo-modal-title" id="demo-modal-title">DEMO</h2>' +
+        '<div class="demo-modal-media">' +
+          '<video class="demo-modal-video" controls playsinline preload="metadata" hidden></video>' +
+          '<img class="demo-modal-image" alt="Vista previa del producto" hidden>' +
+          '<p class="demo-modal-note" hidden></p>' +
+        '</div>' +
+        '<div class="demo-modal-actions">' +
+          '<button type="button" class="btn btn-primary" data-demo-close>Cerrar</button>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(root);
+
+    var title = root.querySelector('#demo-modal-title');
+    var video = root.querySelector('.demo-modal-video');
+    var image = root.querySelector('.demo-modal-image');
+    var note = root.querySelector('.demo-modal-note');
+    var closeButton = root.querySelector('.demo-modal-close');
+    var lastFocused = null;
+
+    function setOpen(isOpen) {
+      root.classList.toggle('is-open', isOpen);
+      root.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    }
+
+    function stopVideo() {
+      video.pause();
+      video.removeAttribute('src');
+      video.load();
+    }
+
+    function onKeydown(event) {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        close();
+      }
+    }
+
+    function close() {
+      if (!root.classList.contains('is-open')) return;
+      setOpen(false);
+      document.removeEventListener('keydown', onKeydown);
+      stopVideo();
+      if (lastFocused && typeof lastFocused.focus === 'function') {
+        lastFocused.focus();
+      }
+    }
+
+    function open(options) {
+      options = options || {};
+      var productTitle = options.title || '';
+      var videoSrc = options.video ? String(options.video).trim() : '';
+      var imageSrc = options.image ? String(options.image).trim() : '';
+
+      lastFocused = document.activeElement;
+      stopVideo();
+
+      title.textContent = 'DEMO' + (productTitle ? ' · ' + productTitle : '');
+
+      if (videoSrc) {
+        video.hidden = false;
+        image.hidden = true;
+        note.hidden = true;
+        video.src = videoSrc;
+        video.play().catch(function () {});
+      } else {
+        video.hidden = true;
+        if (imageSrc) {
+          image.hidden = false;
+          image.src = imageSrc;
+        } else {
+          image.hidden = true;
+        }
+        note.hidden = false;
+        note.textContent = 'El video demo' + (productTitle ? ' de ' + productTitle : '') + ' estará disponible próximamente.';
+      }
+
+      setOpen(true);
+      document.addEventListener('keydown', onKeydown);
+      if (closeButton) closeButton.focus();
+    }
+
+    root.querySelectorAll('[data-demo-close]').forEach(function (el) {
+      el.addEventListener('click', close);
+    });
+
+    return { open: open, close: close };
+  }
+
+  function initDemoModals() {
+    var triggers = document.querySelectorAll('[data-demo-open]');
+    if (!triggers.length) return;
+    var modal = createDemoModal();
+    triggers.forEach(function (button) {
+      button.addEventListener('click', function () {
+        modal.open({
+          title: button.getAttribute('data-demo-title') || '',
+          image: button.getAttribute('data-demo-image') || '',
+          video: button.getAttribute('data-demo-video') || ''
+        });
+      });
+    });
+  }
+
+  // Información específica de STOCK, reutilizando la estructura visual del modal.
+  function initStockInfoModal() {
+    var triggers = document.querySelectorAll('[data-stock-info-open]');
+    if (!triggers.length) return;
+
+    var root = document.createElement('div');
+    root.className = 'demo-modal stock-info-modal';
+    root.setAttribute('role', 'dialog');
+    root.setAttribute('aria-modal', 'true');
+    root.setAttribute('aria-labelledby', 'stock-info-modal-title');
+    root.setAttribute('aria-hidden', 'true');
+    root.innerHTML =
+      '<div class="demo-modal-backdrop" data-stock-info-close></div>' +
+      '<div class="demo-modal-dialog">' +
+        '<div class="demo-modal-head">' +
+          '<span class="demo-modal-chip">NOVARIX · PRODUCTO</span>' +
+          '<button type="button" class="demo-modal-close" data-stock-info-close aria-label="Cerrar">&times;</button>' +
+        '</div>' +
+        '<h2 class="demo-modal-title" id="stock-info-modal-title">STOCK by NOVARIX</h2>' +
+        '<div class="stock-info-content">' +
+          '<p>Software de escritorio para gestión de inventario en Windows.</p>' +
+          '<h3>Funciones</h3>' +
+          '<ul class="stock-info-list">' +
+            '<li>Foto del producto.</li>' +
+            '<li>Nombre del producto.</li>' +
+            '<li>Control de cantidad/stock.</li>' +
+            '<li>Precio.</li>' +
+            '<li>Interfaz tipo planilla.</li>' +
+            '<li>Almacenamiento local.</li>' +
+            '<li>Gestión simple, visual y rápida.</li>' +
+          '</ul>' +
+        '</div>' +
+        '<div class="demo-modal-actions">' +
+          '<button type="button" class="btn btn-primary" data-stock-info-close>Cerrar</button>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(root);
+
+    var closeButton = root.querySelector('.demo-modal-close');
+    var lastFocused = null;
+
+    function setOpen(isOpen) {
+      root.classList.toggle('is-open', isOpen);
+      root.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    }
+
+    function onKeydown(event) {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        close();
+      }
+    }
+
+    function close() {
+      if (!root.classList.contains('is-open')) return;
+      setOpen(false);
+      document.removeEventListener('keydown', onKeydown);
+      if (lastFocused && typeof lastFocused.focus === 'function') {
+        lastFocused.focus();
+      }
+    }
+
+    function open() {
+      lastFocused = document.activeElement;
+      setOpen(true);
+      document.addEventListener('keydown', onKeydown);
+      if (closeButton) closeButton.focus();
+    }
+
+    root.querySelectorAll('[data-stock-info-close]').forEach(function (el) {
+      el.addEventListener('click', close);
+    });
+
+    triggers.forEach(function (button) {
+      button.addEventListener('click', open);
+    });
+  }
+
+  // Modal de información para KAIRÓS y NOX (mismo patrón que STOCK).
+  function initProductInfoModal() {
+    var triggers = document.querySelectorAll('[data-product-info]');
+    if (!triggers.length) return;
+
+    var contentByProduct = {
+      kairos: {
+        title: 'KAIRÓS',
+        chip: 'NOVARIX · PRODUCTO',
+        html:
+          '<p>Aplicación de organización y recordatorios para Android.</p>' +
+          '<h3>Funciones</h3>' +
+          '<ul class="stock-info-list">' +
+            '<li>Recordatorios personalizados.</li>' +
+            '<li>Categorías.</li>' +
+            '<li>Repetición.</li>' +
+            '<li>Notificaciones locales.</li>' +
+            '<li>Organización personal.</li>' +
+          '</ul>'
+      },
+      nox: {
+        title: 'NOX',
+        chip: 'NOVARIX · PRODUCTO',
+        html:
+          '<p>Programá el apagado de tu PC, configurá horarios y mantené el control de forma simple, segura e inteligente.</p>' +
+          '<h3>Funciones</h3>' +
+          '<ul class="stock-info-list">' +
+            '<li>Programación horaria de apagado.</li>' +
+            '<li>Cuenta regresiva.</li>' +
+            '<li>Avisos previos.</li>' +
+            '<li>Funcionamiento en segundo plano.</li>' +
+            '<li>Interfaz simple para Windows.</li>' +
+          '</ul>'
+      }
+    };
+
+    var root = document.createElement('div');
+    root.className = 'demo-modal product-info-modal';
+    root.setAttribute('role', 'dialog');
+    root.setAttribute('aria-modal', 'true');
+    root.setAttribute('aria-labelledby', 'product-info-modal-title');
+    root.setAttribute('aria-hidden', 'true');
+    root.innerHTML =
+      '<div class="demo-modal-backdrop" data-product-info-close></div>' +
+      '<div class="demo-modal-dialog">' +
+        '<div class="demo-modal-head">' +
+          '<span class="demo-modal-chip" id="product-info-modal-chip">NOVARIX · PRODUCTO</span>' +
+          '<button type="button" class="demo-modal-close" data-product-info-close aria-label="Cerrar">&times;</button>' +
+        '</div>' +
+        '<h2 class="demo-modal-title" id="product-info-modal-title">PRODUCTO</h2>' +
+        '<div class="stock-info-content" id="product-info-modal-body"></div>' +
+        '<div class="demo-modal-actions">' +
+          '<button type="button" class="btn btn-primary" data-product-info-close>Cerrar</button>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(root);
+
+    var title = root.querySelector('#product-info-modal-title');
+    var chip = root.querySelector('#product-info-modal-chip');
+    var body = root.querySelector('#product-info-modal-body');
+    var closeButton = root.querySelector('.demo-modal-close');
+    var lastFocused = null;
+
+    function setOpen(isOpen) {
+      root.classList.toggle('is-open', isOpen);
+      root.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    }
+
+    function onKeydown(event) {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        close();
+      }
+    }
+
+    function close() {
+      if (!root.classList.contains('is-open')) return;
+      setOpen(false);
+      document.removeEventListener('keydown', onKeydown);
+      if (lastFocused && typeof lastFocused.focus === 'function') {
+        lastFocused.focus();
+      }
+    }
+
+    function open(productKey) {
+      var data = contentByProduct[productKey];
+      if (!data) return;
+      lastFocused = document.activeElement;
+      title.textContent = data.title;
+      chip.textContent = data.chip;
+      body.innerHTML = data.html;
+      setOpen(true);
+      document.addEventListener('keydown', onKeydown);
+      if (closeButton) closeButton.focus();
+    }
+
+    root.querySelectorAll('[data-product-info-close]').forEach(function (el) {
+      el.addEventListener('click', close);
+    });
+
+    triggers.forEach(function (button) {
+      button.addEventListener('click', function () {
+        open(button.getAttribute('data-product-info'));
+      });
+    });
+  }
+
+  // ==========================================================================
   // Inicialización
   // ==========================================================================
   function init() {
     handleLogoFallback();
     initRevealOnScroll();
+    initProductCarousels();
+    initDemoModals();
+    initStockInfoModal();
+    initProductInfoModal();
     initNoxCheckout();
   }
 

@@ -6,16 +6,21 @@
   <title>NOVARIX | Soluciones digitales</title>
   <meta name="description" content="NOVARIX desarrolla aplicaciones, sitios web y software orientados a resolver problemas reales.">
   <meta name="theme-color" content="#05070d">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260903-hero2">
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="brand" aria-label="NOVARIX — Inicio">
-        <img src="logo_novarix.png?v=3" alt="NOVARIX" class="brand-logo" data-logo-fallback>
-        <span class="brand-logo-fallback">NOVARIX</span>
+      <a href="index.html" class="brand brand--header" aria-label="NOVARIX — Inicio">
+        <span class="brand-lockup">
+          <img src="assets/logo-icon.png" alt="" class="brand-lockup-icon" aria-hidden="true">
+          <span class="brand-lockup-text">NOVA<span class="brand-lockup-accent">RIX</span></span>
+        </span>
       </a>
 
       <nav class="site-nav" aria-label="Navegación principal">
@@ -29,7 +34,7 @@
         </ul>
       </nav>
 
-      <a href="privacy-kairos.html" class="btn btn-outline header-cta">Política de privacidad</a>
+      <a href="#contacto" class="btn btn-primary header-cta">Contactar</a>
     </div>
   </header>
 
@@ -37,11 +42,31 @@
     <!-- ============ HERO ============ -->
     <section class="hero" id="inicio">
       <div class="container hero-content">
-        <p class="hero-eyebrow reveal">Innovamos hoy, construimos el futuro.</p>
+        <p class="hero-eyebrow reveal">INNOVAMOS HOY, CONSTRUIMOS EL FUTURO.</p>
 
-        <h1 class="hero-brand reveal">
-          <span class="logo-wrap logo-wrap-hero">
-            <span class="logo-text">NOVARIX</span>
+        <h1 class="hero-brand reveal" aria-label="NOVARIX">
+          <span class="hero-lockup" aria-hidden="true">
+            <span class="hero-visual-shell">
+              <span class="hero-visual-grid"></span>
+              <span class="hero-visual-scan"></span>
+              <img
+                src="assets/novarix-hero.webp"
+                alt=""
+                class="hero-visual-image"
+                width="1600"
+                height="892"
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
+              >
+              <span class="hero-visual-corner hero-visual-corner--tl"></span>
+              <span class="hero-visual-corner hero-visual-corner--tr"></span>
+              <span class="hero-visual-corner hero-visual-corner--bl"></span>
+              <span class="hero-visual-corner hero-visual-corner--br"></span>
+              <span class="hero-visual-orbit hero-visual-orbit--one"></span>
+              <span class="hero-visual-orbit hero-visual-orbit--two"></span>
+            </span>
+            <span class="hero-lockup-text">NOVA<span class="hero-lockup-accent">RIX</span></span>
           </span>
         </h1>
 
@@ -144,180 +169,181 @@
 
         <div class="products-grid">
           <!-- Tarjeta 01 — KAIRÓS -->
-          <article class="product-card reveal">
+          <article class="product-card reveal" data-carousel>
             <span class="product-number" aria-hidden="true">01</span>
-            <div class="product-media">
-             <img src="assets/kairos.png?v=4" alt="KAIRÓS by NOVARIX" loading="lazy">
-            </div>
-            <div class="product-body">
-              <span class="product-badge">APP ANDROID</span>
+
+            <div class="product-card-heading">
               <h3 class="product-name">KAIRÓS</h3>
+              <span class="product-badge">APP ANDROID</span>
+            </div>
+
+            <div class="product-carousel">
+              <div class="carousel-viewport" aria-label="Galería de KAIRÓS">
+                <ul class="carousel-track" data-carousel-track>
+                  <li class="carousel-slide">
+                    <img src="assets/kairos.png" alt="KAIRÓS by NOVARIX" loading="lazy">
+                  </li>
+                </ul>
+              </div>
+              <button class="carousel-btn carousel-btn--prev" type="button" data-carousel-prev aria-label="Imagen anterior" hidden>‹</button>
+              <button class="carousel-btn carousel-btn--next" type="button" data-carousel-next aria-label="Imagen siguiente" hidden>›</button>
+              <div class="carousel-dots" data-carousel-dots aria-label="Indicadores de galería"></div>
+            </div>
+
+            <div class="product-body">
               <p class="product-description">Organizá tu día, gestioná recordatorios y mantené tus actividades bajo control desde un solo lugar.</p>
-              <span class="product-cta">PRÓXIMAMENTE</span>
+              <div class="product-actions">
+                <div class="product-action-row">
+                  <button class="product-cta product-demo" type="button" data-demo-open data-demo-title="KAIRÓS" data-demo-image="assets/kairos.png" data-demo-video="">▶ Ver demo</button>
+                  <button class="product-cta product-info" type="button" data-product-info="kairos">Más información</button>
+                </div>
+                <p class="product-free-note">Versión gratuita disponible</p>
+                <span class="product-cta product-cta--status">PRÓXIMAMENTE</span>
+              </div>
             </div>
           </article>
 
-          <!-- Tarjeta 02 — ÓRBITA -->
-          <article class="product-card reveal">
+          <!-- Tarjeta 02 — NOX -->
+          <article class="product-card reveal" data-carousel>
             <span class="product-number" aria-hidden="true">02</span>
-            <div class="product-media">
-              <img src="assets/orbita.png" alt="ÓRBITA by NOVARIX" loading="lazy">
-            </div>
-            <div class="product-body">
-              <span class="product-badge">ASISTENTE VISUAL</span>
-              <h3 class="product-name">ÓRBITA</h3>
-              <p class="product-description">Un asistente visual impulsado por inteligencia artificial que observa, comprende y te guía paso a paso.</p>
-              <span class="product-cta">EN DESARROLLO</span>
-            </div>
-          </article>
 
-          <!-- Tarjeta 03 — NOX -->
-          <article class="product-card reveal">
-            <span class="product-number" aria-hidden="true">03</span>
-            <div class="product-media">
-              <img src="assets/Nox.png" alt="NOX by NOVARIX" loading="lazy">
-            </div>
-            <div class="product-body">
-              <span class="product-badge">CONTROL DE PC</span>
+            <div class="product-card-heading">
               <h3 class="product-name">NOX</h3>
+              <span class="product-badge">CONTROL DE PC</span>
+            </div>
+
+            <div class="product-carousel">
+              <div class="carousel-viewport" aria-label="Galería de NOX">
+                <ul class="carousel-track" data-carousel-track>
+                  <li class="carousel-slide">
+                    <img src="assets/Nox.png" alt="NOX by NOVARIX" loading="lazy">
+                  </li>
+                </ul>
+              </div>
+              <button class="carousel-btn carousel-btn--prev" type="button" data-carousel-prev aria-label="Imagen anterior" hidden>‹</button>
+              <button class="carousel-btn carousel-btn--next" type="button" data-carousel-next aria-label="Imagen siguiente" hidden>›</button>
+              <div class="carousel-dots" data-carousel-dots aria-label="Indicadores de galería"></div>
+            </div>
+
+            <div class="product-body">
               <p class="product-description">Programá el apagado de tu PC, configurá horarios y mantené el control de forma simple, segura e inteligente.</p>
-              <p class="product-price">USD 9.99 <span>— PAGO ÚNICO</span></p>
-              <button class="product-cta product-buy" id="nox-buy-button" type="button" disabled>COMPRAR NOX</button>
-              <p class="product-sale-status" id="nox-sale-status" role="status">VENTAS TODAVÍA DESACTIVADAS</p>
+              <div class="product-actions">
+                <div class="product-action-row">
+                  <button class="product-cta product-demo" type="button" data-demo-open data-demo-title="NOX" data-demo-image="assets/Nox.png" data-demo-video="">▶ Ver demo</button>
+                  <button class="product-cta product-info" type="button" data-product-info="nox">Más información</button>
+                </div>
+                <p class="product-price">USD 9.99 <span>— PAGO ÚNICO</span></p>
+                <button class="product-cta product-buy" id="nox-buy-button" type="button" disabled>COMPRAR NOX</button>
+                <p class="product-sale-status" id="nox-sale-status" role="status">VENTAS TODAVÍA DESACTIVADAS</p>
+              </div>
             </div>
           </article>
 
-          <!-- Tarjeta 04 — PRÓXIMAMENTE -->
-          <article class="product-card product-card--coming reveal">
-            <span class="product-number" aria-hidden="true">04</span>
-            <div class="product-media product-media--coming">
-              <span class="coming-orb" aria-hidden="true">
-                <span class="coming-spark coming-spark--tl"></span>
-                <span class="coming-spark coming-spark--br"></span>
-                <span class="coming-plus">+</span>
-              </span>
+          <!-- Tarjeta 03 — STOCK -->
+          <article class="product-card reveal" data-carousel>
+            <span class="product-number" aria-hidden="true">03</span>
+
+            <div class="product-card-heading">
+              <h3 class="product-name">STOCK by NOVARIX</h3>
+              <span class="product-badge">APP WINDOWS</span>
             </div>
+
+            <div class="product-carousel">
+              <div class="carousel-viewport" aria-label="Galería de STOCK by NOVARIX">
+                <ul class="carousel-track" data-carousel-track>
+                  <li class="carousel-slide">
+                    <img src="assets/stock-novarix.png" alt="STOCK by NOVARIX" loading="lazy">
+                  </li>
+                </ul>
+              </div>
+              <button class="carousel-btn carousel-btn--prev" type="button" data-carousel-prev aria-label="Imagen anterior" hidden>‹</button>
+              <button class="carousel-btn carousel-btn--next" type="button" data-carousel-next aria-label="Imagen siguiente" hidden>›</button>
+              <div class="carousel-dots" data-carousel-dots aria-label="Indicadores de galería"></div>
+            </div>
+
             <div class="product-body">
-              <span class="product-badge">NUEVO PRODUCTO</span>
-              <h3 class="product-name">Próximamente</h3>
-              <p class="product-description">Seguimos desarrollando nuevas soluciones. El próximo producto de NOVARIX aparecerá aquí.</p>
-              <span class="product-cta product-cta--ghost">MÁS INFORMACIÓN PRONTO</span>
+              <p class="product-description">Gestión de stock simple, visual y potente para Windows.</p>
+              <div class="product-actions">
+                <div class="product-action-row">
+                  <button class="product-cta product-demo" type="button" data-demo-open data-demo-title="STOCK by NOVARIX" data-demo-image="assets/logo_novarix.png" data-demo-video="">▶ Ver demo</button>
+                  <button class="product-cta product-info stock-info-trigger" type="button" data-stock-info-open>Más información</button>
+                </div>
+                <p class="product-free-note">Versión gratuita disponible</p>
+                <span class="product-cta product-cta--status">PRÓXIMAMENTE</span>
+              </div>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ============ PROYECTOS ============ -->
+    <!-- ============ CÓMO TRABAJAMOS ============ -->
     <section class="section" id="proyectos">
       <div class="container">
         <div class="section-heading reveal">
-          <span class="section-tag">Proyectos</span>
-          <h2>Lo que estamos construyendo</h2>
+          <span class="section-tag">CÓMO TRABAJAMOS</span>
+          <h2>De una idea a una solución lista para usar</h2>
+          <p class="products-intro">Transformamos necesidades concretas en aplicaciones, sitios web y software funcionales, acompañando cada etapa del proceso.</p>
         </div>
 
-        <!-- Proyecto destacado: KAIRÓS -->
-        <article class="project-card project-card-featured reveal">
-          <div class="project-card-body">
-            <div class="project-head">
-              <div>
-                <h3 class="project-name">KAIRÓS</h3>
-                <p class="project-subtitle">Aplicación de organización y recordatorios para Android.</p>
-              </div>
-              <span class="project-badge">ANDROID</span>
-            </div>
-
-            <p class="project-description">
-              KAIRÓS ayuda a organizar la vida personal mediante recordatorios, categorías,
-              repetición, notificaciones locales y herramientas pensadas para el día a día.
-            </p>
-
-            <ul class="feature-list" role="list">
-              <li>Recordatorios</li>
-              <li>Categorías</li>
-              <li>Repetición</li>
-              <li>Notificaciones locales</li>
-              <li>Organización personal</li>
-            </ul>
-
-            <div class="project-actions">
-              <a href="privacy-kairos.html" class="btn btn-primary">Política de privacidad</a>
-            </div>
-          </div>
-        </article>
-
         <div class="projects-grid">
-          <article class="project-card project-card-secondary reveal">
+          <article class="project-card reveal">
             <div class="project-card-body">
               <div class="project-head">
                 <div>
-                  <h3 class="project-name">Sistema de Pedidos</h3>
-                  <p class="project-subtitle">Aplicaciones Android</p>
+                  <h3 class="project-name">ENTENDEMOS EL PROBLEMA</h3>
                 </div>
-                <span class="project-badge">ANDROID</span>
+                <span class="project-badge">ETAPA 01</span>
               </div>
 
               <p class="project-description">
-                Sistema compuesto por aplicaciones para clientes y administración, diseñado para
-                digitalizar la recepción y gestión de pedidos de un comercio.
+                Analizamos qué necesitás, qué problema querés resolver y cuál es la mejor forma de abordarlo con tecnología.
               </p>
-
-              <ul class="feature-list" role="list">
-                <li>Pedidos</li>
-                <li>Clientes</li>
-                <li>Notificaciones</li>
-                <li>Gestión</li>
-                <li>Android</li>
-              </ul>
             </div>
           </article>
 
-          <article class="project-card project-card-secondary reveal">
+          <article class="project-card reveal">
             <div class="project-card-body">
               <div class="project-head">
                 <div>
-                  <h3 class="project-name">Terapia Física</h3>
-                  <p class="project-subtitle">Sitio web</p>
+                  <h3 class="project-name">DISEÑAMOS LA SOLUCIÓN</h3>
                 </div>
-                <span class="project-badge">WEB</span>
+                <span class="project-badge">ETAPA 02</span>
               </div>
 
               <p class="project-description">
-                Renovación de presencia digital para una clínica de terapia física, con diseño
-                moderno, información institucional y accesos rápidos de contacto.
+                Definimos las funciones, la experiencia de uso y la estructura necesaria antes de comenzar el desarrollo.
               </p>
-
-              <ul class="feature-list" role="list">
-                <li>Sitio web</li>
-                <li>Responsive</li>
-                <li>Diseño moderno</li>
-                <li>Contacto</li>
-                <li>Presencia digital</li>
-              </ul>
             </div>
           </article>
 
-          <article class="project-card project-card-secondary reveal">
+          <article class="project-card reveal">
             <div class="project-card-body">
               <div class="project-head">
                 <div>
-                  <h3 class="project-name">Apagado Programado</h3>
-                  <p class="project-subtitle">Software de escritorio / Windows</p>
+                  <h3 class="project-name">DESARROLLAMOS Y PROBAMOS</h3>
                 </div>
-                <span class="project-badge">WINDOWS</span>
+                <span class="project-badge">ETAPA 03</span>
               </div>
 
               <p class="project-description">
-                Herramienta para Windows que permite programar automáticamente el apagado de una
-                computadora, con avisos previos y cuenta regresiva.
+                Construimos la solución y realizamos las pruebas necesarias para asegurar que funcione de manera correcta y estable.
               </p>
+            </div>
+          </article>
 
-              <ul class="feature-list" role="list">
-                <li>Windows</li>
-                <li>Automatización</li>
-                <li>Programación horaria</li>
-                <li>Segundo plano</li>
-              </ul>
+          <article class="project-card reveal">
+            <div class="project-card-body">
+              <div class="project-head">
+                <div>
+                  <h3 class="project-name">ENTREGAMOS Y ACOMPAÑAMOS</h3>
+                </div>
+                <span class="project-badge">ETAPA 04</span>
+              </div>
+
+              <p class="project-description">
+                Dejamos el producto listo para usar y brindamos acompañamiento para ajustes, mejoras o soporte posterior.
+              </p>
             </div>
           </article>
         </div>
@@ -337,35 +363,63 @@
         </p>
 
         <!-- EDITAR: reemplazá este correo por el que quieras usar -->
-        <a class="contact-email reveal" href="mailto:soportenovarix@gmail.com">soportenovarix@gmail.com</a>
+        <a class="contact-email reveal" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=soportenovarix@gmail.com&amp;su=Consulta%20desde%20NOVARIX" target="_blank" rel="noopener noreferrer">soportenovarix@gmail.com</a>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="cta-band">
+      <div class="container cta-band-inner reveal">
+        <span class="section-tag">Empecemos</span>
+        <h2 class="cta-title">¿Listo para dar el siguiente paso?</h2>
+        <p class="cta-text">Contanos tu idea y conversemos sobre cómo la tecnología puede resolverla.</p>
+        <div class="cta-actions">
+          <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=soportenovarix@gmail.com&amp;su=Consulta%20desde%20NOVARIX" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Contactar por email</a>
+          <a href="#productos" class="btn btn-secondary">Ver productos</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer site-footer--main">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <a href="index.html" class="brand" aria-label="NOVARIX — Inicio">
-          <img src="logo_novarix.png" alt="NOVARIX" class="brand-logo brand-logo-footer" data-logo-fallback>
-          <span class="brand-logo-fallback">NOVARIX</span>
+        <a href="index.html" class="footer-brand-link" aria-label="NOVARIX — Inicio">
+          <span class="footer-lockup" aria-hidden="true">
+            <img src="assets/logo-icon.png" alt="" class="footer-lockup-icon">
+            <span class="footer-lockup-text">NOVA<span class="footer-lockup-accent">RIX</span></span>
+          </span>
         </a>
         <p class="footer-slogan">“La solución está al alcance de un click.”</p>
       </div>
 
-      <nav class="footer-nav" aria-label="Enlaces del pie de página">
+      <nav class="footer-nav" aria-label="Navegación del pie de página">
+        <p class="footer-heading">Navegación</p>
         <ul>
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="privacy-kairos.html">Política de Privacidad de KAIRÓS</a></li>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#soluciones">Soluciones</a></li>
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
         </ul>
       </nav>
+
+      <div class="footer-col">
+        <p class="footer-heading">Contacto / Legal</p>
+        <ul class="footer-list">
+          <li><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=soportenovarix@gmail.com&amp;su=Consulta%20desde%20NOVARIX" target="_blank" rel="noopener noreferrer">soportenovarix@gmail.com</a></li>
+          <li><a href="privacy-kairos.html">Política de privacidad</a></li>
+        </ul>
+      </div>
     </div>
 
     <div class="container footer-bottom">
-      <p>© 2026 NOVARIX. Todos los derechos reservados.</p>
+      <p>© 2026 NOVARIX · Todos los derechos reservados.</p>
     </div>
   </footer>
 
-  <script src="nox-sales-config.js?v=2"></script>
-  <script src="script.js?v=2"></script>
+  <script src="nox-sales-config.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
