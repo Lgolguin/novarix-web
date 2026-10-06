@@ -173,6 +173,19 @@ ol {
   box-shadow: var(--glow-cyan);
 }
 
+.btn-whatsapp {
+  background: linear-gradient(135deg, #1eb85a 0%, #25d366 100%);
+  color: #04170c;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-weight: 700;
+  box-shadow: 0 12px 32px rgba(37, 211, 102, 0.32), 0 0 28px rgba(37, 211, 102, 0.16);
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(37, 211, 102, 0.45), 0 0 34px rgba(37, 211, 102, 0.3);
+}
+
 /* ==========================================================================
    Header / Navegación
    ========================================================================== */
